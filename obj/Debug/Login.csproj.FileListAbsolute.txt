@@ -1,0 +1,10 @@
+C:\Users\rolan\Desktop\New folder\login\login-final-main\bin\Debug\Login.exe.config
+C:\Users\rolan\Desktop\New folder\login\login-final-main\bin\Debug\Login.exe
+C:\Users\rolan\Desktop\New folder\login\login-final-main\bin\Debug\Login.pdb
+C:\Users\rolan\Desktop\New folder\login\login-final-main\obj\Debug\Login.Form2.resources
+C:\Users\rolan\Desktop\New folder\login\login-final-main\obj\Debug\Login.Properties.Resources.resources
+C:\Users\rolan\Desktop\New folder\login\login-final-main\obj\Debug\Login.csproj.GenerateResource.Cache
+C:\Users\rolan\Desktop\New folder\login\login-final-main\obj\Debug\Login.exe
+C:\Users\rolan\Desktop\New folder\login\login-final-main\obj\Debug\Login.pdb
+C:\Users\rolan\Desktop\New folder\login\login-final-main\obj\Debug\Login.csprojResolveAssemblyReference.cache
+C:\Users\rolan\Desktop\New folder\login\login-final-main\obj\Debug\Login.Form1.resources
