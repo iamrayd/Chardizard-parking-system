@@ -56,17 +56,14 @@ namespace Login.UserControls
 
         private void parkBtn_Click(object sender, EventArgs e)
         {
-            Park_out parkOut = new Park_out();
-            ListView list = new ListView();
-            list.Visible = true;
-            list.View = View.Details;
-            list.FullRowSelect = true;
+            string databaseName = GetSelectedFloorDatabaseName();
             // Ensure that plate number is entered
             if (string.IsNullOrEmpty(textBox1.Text))
             {
                 MessageBox.Show("Please enter plate number.");
                 return;
             }
+
             // Ensure that vehicle type is entered
             if (comboBox2.SelectedItem == null)
             {
@@ -81,60 +78,13 @@ namespace Login.UserControls
                 return;
             }
 
-            string p = textBox1.Text;
+            string plateNumber = textBox1.Text;
+            string vehicleType = radioButton1.Checked ? radioButton1.Text : comboBox2.SelectedItem.ToString();
+            string brand = comboBox1.SelectedItem.ToString();
 
-            // Check if it's a motorbike
-            string v = radioButton1.Checked ? radioButton1.Text : comboBox2.SelectedItem.ToString();
-            string b = comboBox1.SelectedItem.ToString();
-
-            // Check if the parking is full (has reached the limit)
-            if (IsParkingFull())
-            {
-                MessageBox.Show("Parking is full. Cannot accept more vehicles.", "Parking Full", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            try
-            {
-                sc.ConnectionString = "Data Source=(localdb)\\Projects;Initial Catalog=master;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False";
-                sc.Open();
-
-                // Insert data into ParkingList using parameters
-                string insertQuery = "INSERT INTO ParkingList (v_plate, v_type, v_brand, v_time) VALUES (@plate, @type, @brand, @time)";
-                cmd = new SqlCommand(insertQuery, sc);
-                cmd.Parameters.AddWithValue("@plate", p);
-                cmd.Parameters.AddWithValue("@type", v);
-                cmd.Parameters.AddWithValue("@brand", b);
-                cmd.Parameters.AddWithValue("@time", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
-                cmd.ExecuteNonQuery();
-
-                sc.Close();
-
-                MessageBox.Show("Parked successfully!");
-            }
-
-            catch (SqlException ex)
-            {
-                // Handle SQL exceptions
-                if (ex.Number == 2627 || ex.Number == 2601)
-                {
-                    // Handle unique constraint violation
-                    MessageBox.Show("A vehicle with the same plate number already exists.", "Duplicate Plate Number", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                {
-                    // Handle other SQL exceptions
-                    MessageBox.Show("SQL error occurred: " + ex.Message);
-                }
-            }
-            catch (Exception ex)
-            {
-                // Handle other exceptions
-                MessageBox.Show("An error occurred: " + ex.Message);
-            }
-
-
-
+    
+            // Add data to the corresponding database
+            AddDataToDatabase(plateNumber, vehicleType, brand, databaseName);
 
             // Clear input fields for the next entry
             textBox1.Text = "";
@@ -144,8 +94,78 @@ namespace Login.UserControls
             radioButton2.Checked = false;
         }
 
-        private bool IsParkingFull()
+        private string GetSelectedFloorDatabaseName()
         {
+            string selectedFloor = comboBox3.SelectedItem.ToString();
+
+            switch (selectedFloor)
+            {
+                case "Floor 1":
+                    return "ParkingList";
+                case "Floor 2":
+                    return "ParkingList2";
+                case "Floor 3":
+                    return "ParkingList3";
+                case "Floor 4":
+                    return "ParkingList4";
+                default:
+                    return ""; // Handle invalid selection appropriately
+            }
+        }
+
+private void AddDataToDatabase(string plateNumber, string vehicleType, string brand, string databaseName)
+{
+    try
+    {
+        if (IsParkingFull())
+        {
+            MessageBox.Show("Parking is full!", "Parking Full", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return;
+        }
+        string connectionString = "Data Source=(localdb)\\Projects;Initial Catalog=master;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False";
+
+        using (SqlConnection connection = new SqlConnection(connectionString))
+        {
+            connection.Open();
+
+            // Insert data into the specified database using parameters
+            string insertQuery = "INSERT INTO " + databaseName + "(v_plate, v_type, v_brand, v_time) VALUES (@plate, @type, @brand, @time)";
+            SqlCommand cmd = new SqlCommand(insertQuery, connection);
+            cmd.Parameters.AddWithValue("@plate", plateNumber);
+            cmd.Parameters.AddWithValue("@type", vehicleType);
+            cmd.Parameters.AddWithValue("@brand", brand);
+            cmd.Parameters.AddWithValue("@time", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+            cmd.ExecuteNonQuery();
+        }
+
+        MessageBox.Show("Parked successfully!");
+        
+    }
+    catch (SqlException ex)
+    {
+        // Handle SQL exceptions
+        if (ex.Number == 2627 || ex.Number == 2601)
+        {
+            // Handle unique constraint violation
+            MessageBox.Show("A vehicle with the same plate number already exists.", "Duplicate Plate Number", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+        else
+        {
+            // Handle other SQL exceptions
+            MessageBox.Show("SQL error occurred: " + ex.Message);
+        }
+    }
+    catch (Exception ex)
+    {
+        // Handle other exceptions
+        MessageBox.Show("An error occurred: " + ex.Message);
+    }
+}
+
+
+        private bool IsParkingFull()
+        {   
+            string databaseName = GetSelectedFloorDatabaseName();
             try
             {
                 using (SqlConnection sc = new SqlConnection("Data Source=(localdb)\\Projects;Initial Catalog=master;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False"))
@@ -153,7 +173,7 @@ namespace Login.UserControls
                     sc.Open();
 
                     // Query to count the number of entries in ParkingList
-                    string query = "SELECT COUNT(*) FROM ParkingList";
+                    string query = "SELECT COUNT(*) FROM " + databaseName;
                     using (SqlCommand cmd = new SqlCommand(query, sc))
                     {
                         int count = (int)cmd.ExecuteScalar();

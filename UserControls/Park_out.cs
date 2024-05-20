@@ -33,6 +33,8 @@ namespace Login.UserControls
 
         private void button3_Click(object sender, EventArgs e)
         {
+            string databaseName = GetSelectedFloorDatabaseName();
+
             if (carListView.SelectedItems.Count == 0)
             {
                 MessageBox.Show("Please select a parked vehicle to park out.");
@@ -42,11 +44,7 @@ namespace Login.UserControls
             ListViewItem selectedItem = carListView.SelectedItems[0];
             string plateNumber = selectedItem.SubItems[0].Text;
 
-            // Delete the record from the database
-            DeleteRecord(plateNumber);
-
-            // Remove selected item from the ListView
-            carListView.Items.Remove(selectedItem);
+            
 
             DateTime parkInTime;
             if (!DateTime.TryParse(selectedItem.SubItems[3].Text, out parkInTime))
@@ -75,12 +73,34 @@ namespace Login.UserControls
             DialogResult result = MessageBox.Show(message, "Park Out Confirmation", MessageBoxButtons.OKCancel);
             if (result == DialogResult.OK)
             {
-                // Remove selected items
+                // Delete the record from the database
+                DeleteRecord(plateNumber, databaseName);
+
+                // Remove selected item from the ListView
                 carListView.Items.Remove(selectedItem);
             }
         }
 
-        private void DeleteRecord(string plateNumber)
+        private string GetSelectedFloorDatabaseName()
+        {
+            string selectedFloor = comboBox1.SelectedItem.ToString();
+
+            switch (selectedFloor)
+            {
+                case "Floor 1":
+                    return "ParkingList";
+                case "Floor 2":
+                    return "ParkingList2";
+                case "Floor 3":
+                    return "ParkingList3";
+                case "Floor 4":
+                    return "ParkingList4";
+                default:
+                    return ""; // Handle invalid selection appropriately
+            }
+        }
+
+        private void DeleteRecord(string plateNumber, string databaseName)
         {
             try
             {
@@ -89,7 +109,7 @@ namespace Login.UserControls
                     sc.Open();
 
                     // Delete record with specified plate number
-                    string deleteQuery = "DELETE FROM ParkingList WHERE v_plate = @plate";
+                    string deleteQuery = "DELETE FROM " + databaseName + " WHERE v_plate = @plate";
                     using (SqlCommand cmd = new SqlCommand(deleteQuery, sc))
                     {
                         cmd.Parameters.AddWithValue("@plate", plateNumber);
@@ -141,28 +161,85 @@ namespace Login.UserControls
         {
         }
 
-        private void Park_out_Load(object sender, EventArgs e)
-        {
-            displayData();
-        }
-
+       
         private void listView1_SelectedIndexChanged_1(object sender, EventArgs e)
         {
 
         }
 
-       
+        private void Park_out_Load(object sender, EventArgs e)
+        {
+            // Get the selected floor
+            string selectedFloor = comboBox1.SelectedItem.ToString();
+
+            // Determine which database to use based on the selected floor
+            string databaseName = "";
+
+            switch (selectedFloor)
+            {
+                case "Floor 1":
+                    databaseName = "ParkingList";
+                    break;
+                case "Floor 2":
+                    databaseName = "ParkingList2";
+                    break;
+                case "Floor 3":
+                    databaseName = "ParkingList3";
+                    break;
+                case "Floor 4":
+                    databaseName = "ParkingList4";
+                    break;
+                default:
+                    // Handle any other cases here
+                    break;
+            }
+
+            // Populate the ListView from the selected database
+            displayData(databaseName);
+        }
+
+
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // Get the selected floor
+            string selectedFloor = comboBox1.SelectedItem.ToString();
+
+            // Determine which database to use based on the selected floor
+            string databaseName = "";
+
+            switch (selectedFloor)
+            {
+                case "Floor 1":
+                    databaseName = "ParkingList";
+                    break;
+                case "Floor 2":
+                    databaseName = "ParkingList2";
+                    break;
+                case "Floor 3":
+                    databaseName = "ParkingList3";
+                    break;
+                case "Floor 4":
+                    databaseName = "ParkingList4";
+                    break;
+                default:
+                    // Handle any other cases here
+                    break;
+            }
+
+            // Populate the ListView from the selected database
+            displayData(databaseName);
         }
 
-        private void displayData()
+   
+
+
+        private void displayData(string databaseName)
         {
             sc.ConnectionString = "Data Source=(localdb)\\Projects;Initial Catalog=master;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False";
             sc.Open();
 
-            cmd = new SqlCommand("SELECT * FROM ParkingList", sc);
+            cmd = new SqlCommand("SELECT * FROM " + databaseName, sc);
             da = new SqlDataAdapter(cmd);
             ds = new DataSet();
             da.Fill(ds, "master"); // Use the actual table name

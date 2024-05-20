@@ -35,6 +35,7 @@
             this.vBrand = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.timeIn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.SuspendLayout();
             // 
             // button3
@@ -75,16 +76,19 @@
             // 
             // plateNo
             // 
+            this.plateNo.DisplayIndex = 0;
             this.plateNo.Text = "Plate no.";
             this.plateNo.Width = 120;
             // 
             // vType
             // 
+            this.vType.DisplayIndex = 1;
             this.vType.Text = "Vehicle Type";
             this.vType.Width = 176;
             // 
             // vBrand
             // 
+            this.vBrand.DisplayIndex = 2;
             this.vBrand.Text = "Vehicle Brand";
             this.vBrand.Width = 176;
             // 
@@ -105,6 +109,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 31;
+            this.comboBox1.Text = "Floor 1";
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // Park_out
@@ -131,5 +136,6 @@
         private System.Windows.Forms.ColumnHeader vBrand;
         private System.Windows.Forms.ColumnHeader timeIn;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

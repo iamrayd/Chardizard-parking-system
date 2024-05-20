@@ -40,6 +40,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.rectangleShape1 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // parkBtn
@@ -192,11 +193,26 @@
             this.shapeContainer1.TabIndex = 37;
             this.shapeContainer1.TabStop = false;
             // 
+            // comboBox3
+            // 
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Items.AddRange(new object[] {
+            "Floor 1",
+            "Floor 2",
+            "Floor 3",
+            "Floor 4"});
+            this.comboBox3.Location = new System.Drawing.Point(130, 55);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(121, 21);
+            this.comboBox3.TabIndex = 38;
+            this.comboBox3.Text = "Floor 1";
+            // 
             // Park_in
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(201)))), ((int)(((byte)(202)))));
+            this.Controls.Add(this.comboBox3);
             this.Controls.Add(this.parkBtn);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.label4);
@@ -230,5 +246,6 @@
         private System.Windows.Forms.Label label1;
         private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape1;
         private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer1;
+        private System.Windows.Forms.ComboBox comboBox3;
     }
 }

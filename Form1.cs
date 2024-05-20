@@ -87,6 +87,15 @@ namespace Login
             }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form f4 = new Form4();
+            f4.Show();
+            this.Enabled = false;
+
+        }
+
+
         private void Form1_Load(object sender, EventArgs e)
         {
 
@@ -139,7 +148,7 @@ namespace Login
             if (string.IsNullOrWhiteSpace(usernameTxt.Text))
             {
                 usernameTxt.Text = UsernamePlaceholder;
-                usernameTxt.ForeColor = Color.White;
+                usernameTxt.ForeColor = Color.Silver;
 
             }
         }
@@ -158,7 +167,7 @@ namespace Login
             if (string.IsNullOrWhiteSpace(passwordTxt.Text))
             {
                 passwordTxt.Text = PasswordPlaceholder;
-                passwordTxt.ForeColor = Color.White;
+                passwordTxt.ForeColor = Color.Silver;
             }
         }
 
@@ -167,7 +176,7 @@ namespace Login
             if (passwordTxt.Text != PasswordPlaceholder)
             {
                 passwordTxt.PasswordChar = '*'; // Enable password masking for user input
-                passwordTxt.ForeColor = Color.White;
+                passwordTxt.ForeColor = Color.Silver;
             }
             else
             {
@@ -187,7 +196,7 @@ namespace Login
             {
                 passwordTxt.Text = PasswordPlaceholder;
                 passwordTxt.PasswordChar = '\0'; // Disable password masking for placeholder
-                passwordTxt.ForeColor = Color.White;
+                passwordTxt.ForeColor = Color.Silver;
             }
         }
 
@@ -215,43 +224,6 @@ namespace Login
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (!string.IsNullOrEmpty(usernameTxt.Text) && !string.IsNullOrEmpty(passwordTxt.Text))
-                {
-                    using (SqlConnection sc = new SqlConnection())
-                    {
-                        sc.ConnectionString = "Data Source=(localdb)\\Projects;Initial Catalog=Users;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False";
-                        sc.Open();
-
-                        using (SqlCommand cmd = new SqlCommand("insert into UserInfo values(@Username, @Password) ", sc))
-                        {
-                            cmd.Parameters.AddWithValue("@Username", usernameTxt.Text);
-                            cmd.Parameters.AddWithValue("@Password", passwordTxt.Text);
-                            cmd.ExecuteNonQuery();
-                        }
-                    }
-
-                    MessageBox.Show("Registered Successfully");
-                }
-                else {
-                    Console.WriteLine("Username or password cannot be empty.");
-                }
-            }
-            catch (SqlException ex)
-            {
-                if (ex.Number == 2627) // Unique constraint violation error number
-                {
-                    MessageBox.Show("Username or password already exists.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                }
-                else
-                {
-                    MessageBox.Show("An error occurred: " + ex.Message);
-                }
-            }
-        }
+        
     }
 }
