@@ -23,3 +23,4 @@ C:\Users\rolan\Desktop\New folder\c#\Chardizard-parking-system-master\obj\Debug\
 C:\Users\rolan\Desktop\New folder\c#\Chardizard-parking-system-master\obj\Debug\Login.UserControls.Park_out.resources
 C:\Users\rolan\Desktop\New folder\c#\Chardizard-parking-system-master\obj\Debug\Login.csprojResolveAssemblyReference.cache
 C:\Users\rolan\Desktop\New folder\c#\Chardizard-parking-system-master\obj\Debug\Login.Form4.resources
+C:\Users\rolan\Desktop\New folder\c#\Chardizard-parking-system-master\obj\Debug\Login.AdminForm.resources

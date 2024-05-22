@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             this.welcomeLabel = new System.Windows.Forms.Label();
             this.closeLabel = new System.Windows.Forms.Label();
             this.minimizeLabel = new System.Windows.Forms.Label();
@@ -247,6 +248,7 @@
             // pictureBox1
             // 
             this.pictureBox1.ErrorImage = null;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(12, 17);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(35, 33);

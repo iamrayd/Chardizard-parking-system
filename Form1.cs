@@ -50,6 +50,16 @@ namespace Login
             string username = usernameTxt.Text;
             string password = passwordTxt.Text;
 
+            if (username == "admin" && password == "1234")
+            {
+                // Login successful for admin
+                MessageBox.Show("Admin login successful", "Login Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                AdminForm adminForm = new AdminForm();
+                adminForm.Show();
+                this.Hide();
+                return;
+            }
+
             string connectionString = "Data Source=(localdb)\\Projects;Initial Catalog=Users;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -72,7 +82,7 @@ namespace Login
                     if (count > 0)
                     {
                         // Login successful
-                        MessageBox.Show("Login successful");
+                        MessageBox.Show("Login successful", "Login Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         string userName = username;
                         Form2 fr2 = new Form2(userName);
                         fr2.Show();
@@ -81,7 +91,7 @@ namespace Login
                     else
                     {
                         // Invalid credentials
-                        MessageBox.Show("Invalid credentials!");
+                        MessageBox.Show("Invalid credentials!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -91,8 +101,7 @@ namespace Login
         {
             Form f4 = new Form4();
             f4.Show();
-            this.Enabled = false;
-
+            this.Hide();
         }
 
 

@@ -23,10 +23,7 @@ namespace Login.UserControls
 
             carListView.View = View.Details;
             carListView.FullRowSelect = true;
-
-
-            // Load data when the control is initialized
-            Load += Park_out_Load;
+            
         }
 
         

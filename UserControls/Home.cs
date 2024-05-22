@@ -7,11 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace Login.UserControls
 {
     public partial class Home : UserControl
     {
+        private SqlConnection sc = new SqlConnection();
+        SqlCommand cmd;
+        SqlDataAdapter da;
+        DataSet ds;
+
         public Home()
         {
             InitializeComponent();
@@ -46,5 +52,7 @@ namespace Login.UserControls
         {
 
         }
+
+       
     }
 }

@@ -8,10 +8,7 @@ namespace Login.UserControls
     public partial class Park_in : UserControl
     {
         private SqlConnection sc = new SqlConnection();
-        SqlCommand cmd;
-        SqlDataAdapter da;
-        DataSet ds;
-
+      
         public Park_in()
         {
             InitializeComponent();
@@ -25,7 +22,7 @@ namespace Login.UserControls
             {
                 // Populate combobox1 with motorbike brands
                 comboBox1.Items.Clear();
-                comboBox1.Items.AddRange(new string[] { "Ducati", "Nmax", "BMW", "Kawasaki", "Yamaha", "Honda" });
+                comboBox1.Items.AddRange(new string[] { "Ducati", "BMW", "Kawasaki", "Yamaha", "Honda" });
                 comboBox1.Text = "Select Brand";
                 comboBox2.Items.Clear();
                 comboBox2.Text = "Motorbike";
@@ -119,7 +116,7 @@ private void AddDataToDatabase(string plateNumber, string vehicleType, string br
     {
         if (IsParkingFull())
         {
-            MessageBox.Show("Parking is full!", "Parking Full", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Parking is full! Try other floors.", "Parking Full", MessageBoxButtons.OK, MessageBoxIcon.Information);
             return;
         }
         string connectionString = "Data Source=(localdb)\\Projects;Initial Catalog=master;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False";

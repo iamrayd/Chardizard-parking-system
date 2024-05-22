@@ -35,14 +35,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.lineShape2 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
+            this.lineShape6 = new Microsoft.VisualBasic.PowerPacks.LineShape();
+            this.lineShape5 = new Microsoft.VisualBasic.PowerPacks.LineShape();
+            this.lineShape4 = new Microsoft.VisualBasic.PowerPacks.LineShape();
+            this.lineShape3 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.lineShape1 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.userLabel = new System.Windows.Forms.Label();
             this.passLabel = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
-            this.lineShape3 = new Microsoft.VisualBasic.PowerPacks.LineShape();
-            this.lineShape4 = new Microsoft.VisualBasic.PowerPacks.LineShape();
-            this.lineShape5 = new Microsoft.VisualBasic.PowerPacks.LineShape();
-            this.lineShape6 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.SuspendLayout();
             // 
             // button1
@@ -132,9 +132,57 @@
             this.lineShape3,
             this.lineShape1,
             this.lineShape2});
-            this.shapeContainer1.Size = new System.Drawing.Size(284, 261);
+            this.shapeContainer1.Size = new System.Drawing.Size(278, 256);
             this.shapeContainer1.TabIndex = 23;
             this.shapeContainer1.TabStop = false;
+            // 
+            // lineShape6
+            // 
+            this.lineShape6.BorderColor = System.Drawing.Color.White;
+            this.lineShape6.BorderWidth = 3;
+            this.lineShape6.Name = "lineShape6";
+            this.lineShape6.SelectionColor = System.Drawing.Color.White;
+            this.lineShape6.X1 = -5;
+            this.lineShape6.X2 = 275;
+            this.lineShape6.Y1 = 256;
+            this.lineShape6.Y2 = 255;
+            this.lineShape6.Click += new System.EventHandler(this.lineShape2_Click);
+            // 
+            // lineShape5
+            // 
+            this.lineShape5.BorderColor = System.Drawing.Color.White;
+            this.lineShape5.BorderWidth = 3;
+            this.lineShape5.Name = "lineShape5";
+            this.lineShape5.SelectionColor = System.Drawing.Color.White;
+            this.lineShape5.X1 = -3;
+            this.lineShape5.X2 = 276;
+            this.lineShape5.Y1 = 1;
+            this.lineShape5.Y2 = 0;
+            this.lineShape5.Click += new System.EventHandler(this.lineShape2_Click);
+            // 
+            // lineShape4
+            // 
+            this.lineShape4.BorderColor = System.Drawing.Color.White;
+            this.lineShape4.BorderWidth = 3;
+            this.lineShape4.Name = "lineShape4";
+            this.lineShape4.SelectionColor = System.Drawing.Color.White;
+            this.lineShape4.X1 = 277;
+            this.lineShape4.X2 = 277;
+            this.lineShape4.Y1 = 255;
+            this.lineShape4.Y2 = -3;
+            this.lineShape4.Click += new System.EventHandler(this.lineShape2_Click);
+            // 
+            // lineShape3
+            // 
+            this.lineShape3.BorderColor = System.Drawing.Color.White;
+            this.lineShape3.BorderWidth = 3;
+            this.lineShape3.Name = "lineShape3";
+            this.lineShape3.SelectionColor = System.Drawing.Color.White;
+            this.lineShape3.X1 = 0;
+            this.lineShape3.X2 = 0;
+            this.lineShape3.Y1 = 261;
+            this.lineShape3.Y2 = -2;
+            this.lineShape3.Click += new System.EventHandler(this.lineShape2_Click);
             // 
             // lineShape1
             // 
@@ -186,60 +234,12 @@
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // lineShape3
-            // 
-            this.lineShape3.BorderColor = System.Drawing.Color.White;
-            this.lineShape3.BorderWidth = 3;
-            this.lineShape3.Name = "lineShape3";
-            this.lineShape3.SelectionColor = System.Drawing.Color.White;
-            this.lineShape3.X1 = 0;
-            this.lineShape3.X2 = 0;
-            this.lineShape3.Y1 = 261;
-            this.lineShape3.Y2 = -2;
-            this.lineShape3.Click += new System.EventHandler(this.lineShape2_Click);
-            // 
-            // lineShape4
-            // 
-            this.lineShape4.BorderColor = System.Drawing.Color.White;
-            this.lineShape4.BorderWidth = 3;
-            this.lineShape4.Name = "lineShape4";
-            this.lineShape4.SelectionColor = System.Drawing.Color.White;
-            this.lineShape4.X1 = 277;
-            this.lineShape4.X2 = 277;
-            this.lineShape4.Y1 = 255;
-            this.lineShape4.Y2 = -3;
-            this.lineShape4.Click += new System.EventHandler(this.lineShape2_Click);
-            // 
-            // lineShape5
-            // 
-            this.lineShape5.BorderColor = System.Drawing.Color.White;
-            this.lineShape5.BorderWidth = 3;
-            this.lineShape5.Name = "lineShape5";
-            this.lineShape5.SelectionColor = System.Drawing.Color.White;
-            this.lineShape5.X1 = -3;
-            this.lineShape5.X2 = 276;
-            this.lineShape5.Y1 = 1;
-            this.lineShape5.Y2 = 0;
-            this.lineShape5.Click += new System.EventHandler(this.lineShape2_Click);
-            // 
-            // lineShape6
-            // 
-            this.lineShape6.BorderColor = System.Drawing.Color.White;
-            this.lineShape6.BorderWidth = 3;
-            this.lineShape6.Name = "lineShape6";
-            this.lineShape6.SelectionColor = System.Drawing.Color.White;
-            this.lineShape6.X1 = -5;
-            this.lineShape6.X2 = 275;
-            this.lineShape6.Y1 = 256;
-            this.lineShape6.Y2 = 255;
-            this.lineShape6.Click += new System.EventHandler(this.lineShape2_Click);
-            // 
             // Form4
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(278, 256);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.passLabel);
             this.Controls.Add(this.userLabel);

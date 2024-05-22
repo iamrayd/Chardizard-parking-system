@@ -8,12 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-using System.Data;
 
 namespace Login
 {
     public partial class Form4 : Form
     {
+
         public Form4()
         {
             InitializeComponent();
@@ -46,9 +46,6 @@ namespace Login
 
                 MessageBox.Show("Registered Successfully");
                 this.Hide();
-                Form fr1 = new Form1();
-                fr1.Show();
-                fr1.Enabled = true;
             }
             catch (SqlException ex)
             {

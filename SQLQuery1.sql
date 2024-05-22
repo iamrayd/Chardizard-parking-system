@@ -16,7 +16,7 @@ insert into ParkingList4 values ( '155553abc', 'motor', 'bmw', GETDATE())
 
 DELETE FROM ParkingList WHERE v_type = 'suv';
 DELETE FROM UserInfo WHERE u_pass = '123';
-DELETE FROM UserInfo WHERE u_name = '123';
+DELETE FROM UserInfo WHERE u_name = 'bob';
 
 
 SELECT * FROM ParkingList;
