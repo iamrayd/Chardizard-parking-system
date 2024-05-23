@@ -46,6 +46,10 @@
             this.vType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.vBrand = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.timeIn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.listView3 = new System.Windows.Forms.ListView();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -107,7 +111,7 @@
             this.guna2Button1.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(224)))), ((int)(((byte)(201)))));
             this.guna2Button1.Size = new System.Drawing.Size(147, 43);
             this.guna2Button1.TabIndex = 51;
-            this.guna2Button1.Text = "Home";
+            this.guna2Button1.Text = "Dashboard";
             this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
             // 
             // guna2Button2
@@ -131,7 +135,7 @@
             this.guna2Button2.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(224)))), ((int)(((byte)(201)))));
             this.guna2Button2.Size = new System.Drawing.Size(147, 43);
             this.guna2Button2.TabIndex = 52;
-            this.guna2Button2.Text = "Park-in";
+            this.guna2Button2.Text = "Parking List";
             this.guna2Button2.Click += new System.EventHandler(this.guna2Button2_Click);
             // 
             // guna2Button4
@@ -157,6 +161,7 @@
             this.guna2Button4.Size = new System.Drawing.Size(147, 43);
             this.guna2Button4.TabIndex = 53;
             this.guna2Button4.Text = "Logout";
+            this.guna2Button4.Click += new System.EventHandler(this.guna2Button4_Click);
             // 
             // label1
             // 
@@ -265,12 +270,68 @@
             this.timeIn.Text = "Time";
             this.timeIn.Width = 220;
             // 
+            // guna2Button3
+            // 
+            this.guna2Button3.BorderColor = System.Drawing.Color.White;
+            this.guna2Button3.BorderRadius = 15;
+            this.guna2Button3.BorderThickness = 1;
+            this.guna2Button3.CustomBorderColor = System.Drawing.Color.White;
+            this.guna2Button3.CustomBorderThickness = new System.Windows.Forms.Padding(1);
+            this.guna2Button3.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button3.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button3.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button3.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(91)))), ((int)(((byte)(100)))));
+            this.guna2Button3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2Button3.ForeColor = System.Drawing.Color.White;
+            this.guna2Button3.HoverState.BorderColor = System.Drawing.Color.White;
+            this.guna2Button3.HoverState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(201)))), ((int)(((byte)(202)))));
+            this.guna2Button3.Location = new System.Drawing.Point(27, 249);
+            this.guna2Button3.Name = "guna2Button3";
+            this.guna2Button3.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(224)))), ((int)(((byte)(201)))));
+            this.guna2Button3.Size = new System.Drawing.Size(147, 43);
+            this.guna2Button3.TabIndex = 62;
+            this.guna2Button3.Text = "Users";
+            this.guna2Button3.Click += new System.EventHandler(this.guna2Button3_Click);
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(91)))), ((int)(((byte)(100)))));
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Sans Serif Collection", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.Color.White;
+            this.button3.Location = new System.Drawing.Point(445, 79);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(116, 26);
+            this.button3.TabIndex = 64;
+            this.button3.Text = "Remove";
+            this.button3.UseVisualStyleBackColor = false;
+            // 
+            // listView3
+            // 
+            this.listView3.Location = new System.Drawing.Point(311, 130);
+            this.listView3.Name = "listView3";
+            this.listView3.Size = new System.Drawing.Size(723, 382);
+            this.listView3.TabIndex = 65;
+            this.listView3.UseCompatibleStateImageBehavior = false;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(311, 85);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(116, 20);
+            this.textBox2.TabIndex = 66;
+            // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.ClientSize = new System.Drawing.Size(1126, 576);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.listView3);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.guna2Button3);
             this.Controls.Add(this.listView2);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label4);
@@ -287,6 +348,7 @@
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AdminForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AdminForm";
             this.Load += new System.EventHandler(this.AdminForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -314,6 +376,10 @@
         private System.Windows.Forms.ColumnHeader vType;
         private System.Windows.Forms.ColumnHeader vBrand;
         private System.Windows.Forms.ColumnHeader timeIn;
+        private Guna.UI2.WinForms.Guna2Button guna2Button3;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.ListView listView3;
+        private System.Windows.Forms.TextBox textBox2;
 
     }
 }

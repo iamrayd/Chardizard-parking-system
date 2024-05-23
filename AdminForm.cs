@@ -24,6 +24,9 @@ namespace Login
             InitializeComponent();
             listView2.View = View.Details;
             listView2.FullRowSelect = true;
+            listView3.Visible = false;
+            button3.Visible = false;
+            textBox2.Visible = false;
             listView2.Visible = false;
             comboBox1.Visible = false;
         }
@@ -39,6 +42,9 @@ namespace Login
             label1.Visible = true;
             label3.Visible = true;
             listView1.Visible = true;
+            listView3.Visible = false;
+            button3.Visible = false;
+            textBox2.Visible = false;
             listView2.Visible = false;
             comboBox1.Visible = false;
         }
@@ -49,6 +55,9 @@ namespace Login
             label1.Visible = false;
             label3.Visible = false;
             listView1.Visible = false;
+            listView3.Visible = false;
+            button3.Visible = false;
+            textBox2.Visible = false;
             listView2.Visible = true;
             comboBox1.Visible = true;
         }
@@ -168,6 +177,40 @@ namespace Login
 
             // Populate the ListView from the selected database
             displayData(databaseName);
+        }
+
+        private void guna2Button4_Click(object sender, EventArgs e)
+        {
+            AdminForm parentForm = this.FindForm() as AdminForm;
+            // Check if the button click event was triggered by logoutBtn
+            if (sender == guna2Button4 && parentForm != null)
+            {
+                // Ask user for confirmation
+                DialogResult result = MessageBox.Show("Are you sure you want to logout?", "Logout Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    // Close the parent Form2
+                    parentForm.Close();
+
+                    // Open Form1 as a dialog
+                    Form1 form1 = new Form1();
+                    form1.ShowDialog();
+                }
+            }
+        }
+
+        private void guna2Button3_Click(object sender, EventArgs e)
+        {
+            textBox1.Visible = false;
+            label1.Visible = false;
+            label3.Visible = false;
+            listView1.Visible = false;
+            listView2.Visible = false;
+            comboBox1.Visible = false;
+            textBox2.Visible = true;
+            listView3.Visible = true;
+            button3.Visible = true;
         }
 
         

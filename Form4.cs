@@ -46,6 +46,8 @@ namespace Login
 
                 MessageBox.Show("Registered Successfully");
                 this.Hide();
+                Form1 fr1 = new Form1();
+                fr1.Show();
             }
             catch (SqlException ex)
             {
